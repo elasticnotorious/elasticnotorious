@@ -3,9 +3,6 @@ Yummy!!!
 
 Fulfilling your specific food craving.
 
-function findFood(){};
-var findFood = function(){};
-
 ## Team
 
   - __Product Owner__: Ben Nelson
