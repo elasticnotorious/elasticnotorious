@@ -8,7 +8,7 @@ When writing any block of code that is logically subordinate to the line immedia
 
         ```javascript
         // good:
-        if(condition){
+        if (condition) {
           action();
         }
 
@@ -21,7 +21,7 @@ When writing any block of code that is logically subordinate to the line immedia
     * When a line closes a block, that line starts at the same level as the line that opened the block
         ```javascript
         // good:
-        if(condition){
+        if (condition) {
           action();
         }
 
@@ -83,12 +83,12 @@ When writing any block of code that is logically subordinate to the line immedia
 
 ### Language constructs
 
-* Do not use `for...in` statements with the intent of iterating over a list of numeric keys. Use a for-with-semicolons statement in stead.
+* Do not use `for...in` statements with the intent of iterating over a list of numeric keys. Use a for-with-semicolons statement instead.
 
   ```javascript
   // good:
   var list = ['a', 'b', 'c']
-  for(var i = 0; i < list.length; i++){
+  for (var i = 0; i < list.length; i++) {
     alert(list[i]);
   }
 
@@ -102,7 +102,7 @@ When writing any block of code that is logically subordinate to the line immedia
 * Never omit braces for statement blocks (although they are technically optional).
     ```javascript
     // good:
-    for(key in object){
+    for (key in object) {
       alert(key);
     }
 
@@ -117,7 +117,7 @@ When writing any block of code that is logically subordinate to the line immedia
     // good:
 
     // this comparison evaluates to false, because the number zero is not the same as the empty string.
-    if(0 === ''){
+    if (0 === '') {
       alert('looks like they\'re equal');
     }
 
@@ -129,14 +129,15 @@ When writing any block of code that is logically subordinate to the line immedia
     }
     ```
 
-* Don't use function statements for the entire first half of the course. They introduce a slew of subtle new rules to how the language behaves, and without a clear benefit. Once you and all your peers are expert level in the second half, you can start to use the more (needlessly) complicated option if you like.
+* Use function statements.
 
     ```javascript
-    // good:
-    var go = function(){...};
-
-    // bad:
+     // good:
     function stop(){...};
+
+      // bad:
+    var go = function(){...};
+ 
     ```
 
 
@@ -157,7 +158,7 @@ When writing any block of code that is logically subordinate to the line immedia
 
   ```javascript
   // good:
-  if(condition){
+  if (condition) {
     response();
   }
 
@@ -171,12 +172,12 @@ When writing any block of code that is logically subordinate to the line immedia
 
   ```javascript
   // good:
-  var greet = function(){
+  var greet = function() {
     alert('hi');
   };
 
   // bad:
-  var greet = function(){
+  var greet = function() {
     alert('hi');
   }
   ```
@@ -191,23 +192,40 @@ When writing any block of code that is logically subordinate to the line immedia
 ### Comments
 
 * Provide comments any time you are confident it will make reading your code easier.
-* Be aware that comments come at some cost. They make a file longer and can drift out of sync with the code they annotate.
+* Be aware that comments can drift out of sync with the code they annotate.
 * Comment on what code is attempting to do, not how it will achieve it.
 * A good comment is often less effective than a good variable name.
 
 
 ### Padding & additional whitespace
 
-* Generally, we don't care where you put extra spaces, provided they are not distracting.
-* You may use it as padding for visual clarity. If you do though, make sure it's balanced on both sides.
+* Put spaces between keywords and expression parens.
 
-    ```javascript
-    // optional:
-    alert( "I chose to put visual padding around this string" );
+  ```javascript
+  // good:
+  if (condition) {
+    response();
+  }
 
-    // bad:
-    alert( "I only put visual padding on one side of this string");
-    ```
+  // bad:
+  if(condition){
+    response();
+  };
+  ```
+
+* Put spaces between expression parens and opening curly braces.
+
+  ```javascript
+  // good:
+  if (condition) {
+    response();
+  }
+
+  // bad:
+  if(condition){
+    response();
+  };
+  ```
 
 * You may use it to align two similar lines, but it is not recommended. This pattern usually leads to unnecessary edits of many lines in your code every time you change a variable name.
 
@@ -220,14 +238,14 @@ When writing any block of code that is logically subordinate to the line immedia
 * Put `else` and `else if` statements on the same line as the ending curly brace for the preceding `if` block
     ```javascript
     // good:
-    if(condition){
+    if (condition) {
       response();
-    }else{
+    } else {
       otherResponse();
     }
 
     // bad:
-    if(condition){
+    if (condition) {
       response();
     }
     else{
@@ -240,22 +258,7 @@ When writing any block of code that is logically subordinate to the line immedia
 ### Working with files
 
 * Do not end a file with any character other than a newline.
-* Don't use the -a or -m flags for `git commit` for the first half of the class, since they conceal what is actually happening (and do slightly different things than most people expect).
-
-    ```shell
-    # good:
-    > git add .
-    > git commit
-    [save edits to the commit message file using the text editor that opens]
-
-    # bad:
-    > git commit -a
-    [save edits to the commit message file using the text editor that opens]
-
-    # bad:
-    > git add .
-    > git commit -m "updated algorithm"
-    ```
+* Always use 'git status' before committing.
 
 
 ### Opening or closing too many blocks at once
@@ -264,13 +267,13 @@ When writing any block of code that is logically subordinate to the line immedia
 
     ```javascript
     // avoid:
-    _.ajax(url, {success: function(){
+    _.ajax(url, {success: function() {
       // ...
     }});
 
     // prefer:
     _.ajax(url, {
-      success: function(){
+      success: function() {
         // ...
       }
     });
@@ -293,14 +296,13 @@ When writing any block of code that is logically subordinate to the line immedia
     var cat,
         dog
 
-    // use sparingly:
+    // bad:
     var eel, fly;
     ```
 
 ### Capital letters in variable names
 
-* Some people choose to use capitalization of the first letter in their variable names to indicate that they contain a [class](http://en.wikipedia.org/wiki/Class_(computer_science\)). This capitalized variable might contain a function, a prototype, or some other construct that acts as a representative for the whole class.
-* Optionally, some people use a capital letter only on functions that are written to be run with the keyword `new`.
+* Use a Capital letter to indicate the variable contains a [class](http://en.wikipedia.org/wiki/Class_(computer_science\)). This capitalized variable might contain a function, a prototype, or some other construct that acts as a representative for the whole class.
 * Do not use all-caps for any variables. Some people use this pattern to indicate an intended "constant" variable, but the language does not offer true constants, only mutable variables.
 
 
@@ -320,14 +322,14 @@ When writing any block of code that is logically subordinate to the line immedia
     };
     ```
 
-* For lists, put commas at the end of each newline, not at the beginning of each item in a list
+* For lists, put commas at the end of each newline, not at the beginning of each item in a list, and put a comma after the last element as well.
 
     ```javascript
     // good:
     var animals = [
       'ape',
       'bat',
-      'cat'
+      'cat',
     ];
 
     // bad:
@@ -337,8 +339,6 @@ When writing any block of code that is logically subordinate to the line immedia
       , 'cat'
     ];
     ```
-
-* Avoid use of `switch` statements altogether. They are hard to outdent using the standard whitespace rules above, and are prone to error due to missing `break` statements. See [this article](http://ericleads.com/2012/12/switch-case-considered-harmful/) for more detail.
 
 * Prefer single quotes around JavaScript strings, rather than double quotes. Having a standard of any sort is preferable to a mix-and-match approach, and single quotes allow for easy embedding of HTML, which prefers double quotes around tag attributes.
 
@@ -359,7 +359,7 @@ When writing any block of code that is logically subordinate to the line immedia
 
 ### HTML
 
-* Do not use ids for html elements. Use a class instead.
+* Do not use ids for html elements without a good reason. Use a class instead.
 
     ```html
     <!-- good -->
