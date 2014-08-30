@@ -1,3 +1,4 @@
 node_modules
+.tmp/
 client/bower_components
 .DS_store
