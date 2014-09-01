@@ -23,7 +23,7 @@ exports.index = function(req, res) {
       "restaurant_id": "1",
     }]);
 
-  } else if (req.method == 'POST') {
+  } else if (req.method === 'POST') {
 
     // get JSON object from request
     // add to database
