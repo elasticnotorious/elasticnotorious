@@ -7,6 +7,8 @@ notifications:
   email:
     recipients:
       - fleur@obscure.org
+      - stacy.hseu@gmail.com
+      - brandonpmcnary@gmail.com
+      - s.benjamin.nelson@gmail.com
     on_success: change
     on_failure: change
-
