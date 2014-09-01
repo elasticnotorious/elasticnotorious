@@ -12,3 +12,4 @@ notifications:
       - s.benjamin.nelson@gmail.com
     on_success: change
     on_failure: change
+
