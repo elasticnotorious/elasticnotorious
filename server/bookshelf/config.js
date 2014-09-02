@@ -9,7 +9,7 @@ var db = Bookshelf.initialize({
     password: 'admin',
     database: '',
     charset: 'utf8',
-    filename: path.join(__dirname, '../db/shortly.sqlite')
+    filename: path.join(__dirname, '../../db/crave.sqlite')
   }
 });
 
@@ -46,6 +46,7 @@ db.knex.schema.hasTable('dishes').then(function(exists) {
       d.increments('id').primary();
       d.string('name', 255);
       d.integer('rating', 1);
+      d.integer('restaurant_id');
       d.timestamps();
     }).then(function (table) {
       console.log('Created Table', table);
