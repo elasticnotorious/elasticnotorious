@@ -54,6 +54,19 @@ db.knex.schema.hasTable('dishes').then(function(exists) {
   }
 });
 
+db.knex.schema.hasTable('ratings').then(function(exists) {
+  if (!exists) {
+    db.knex.schema.createTable('ratings', function (d) {
+      d.increments('id').primary();
+      d.integer('rating', 1);
+      d.integer('dish_id');
+      d.timestamps();
+    }).then(function (table) {
+      console.log('Created Table', table);
+    });
+  }
+});
+
 /************************************************************/
 // Add additional schema definitions below
 /************************************************************/
