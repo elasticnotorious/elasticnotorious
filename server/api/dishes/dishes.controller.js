@@ -10,21 +10,37 @@
 'use strict';
 
 var _ = require('lodash');
+var Dishes = require('../../bookshelf/collections/dishes');
+var Dish = require('../../bookshelf/models/dish');
 
 // Get list of things
 exports.index = function(req, res) {
 
   if (req.method === 'GET') {
 
-    // do the database select, return results as array
-    res.json([{
-      "id": "1",      
-      "name": "Chicken Vindaloo",       
-      "rating": 3,     
-      "restaurant_id": "1",
-    }]);
+    Dishes
+      .query({where: req.query})
+      .fetch()
+      .then(function(found) {
+
+        if (found) {
+
+          res.send(201, found);
+
+        } else {
+
+          res.send(404);
+        }
+
+      })
+      .otherwise(function(err) {
+
+        console.log(err);
+        res.send(400);
+      });
 
   } else if (req.method === 'POST') {
+
 
     // get JSON object from request
     // add to database
