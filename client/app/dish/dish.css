@@ -1,0 +1,13 @@
+.rating-link {
+  float: right;
+  color: red;
+  font-size: 18px;
+}
+
+/*Beginning of star rating stuff*/
+#star-rating {
+  float: right;
+  font-size: 33px;
+  color: yellow;
+}
+/*End of star rating stuff*/
