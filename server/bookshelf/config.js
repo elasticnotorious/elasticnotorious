@@ -67,6 +67,21 @@ db.knex.schema.hasTable('ratings').then(function(exists) {
   }
 });
 
+db.knex.schema.hasTable('dish_images').then(function(exists) {
+  if (!exists) {
+    db.knex.schema.createTable('dish_images', function (d) {
+      d.increments('id').primary();
+      d.string('pathname', 255);
+      d.string('hash', 255);
+      d.integer('dish_id');
+      d.integer('votes');
+      d.timestamps();
+    }).then(function (table) {
+      console.log('Created Table', table);
+    });
+  }
+});
+
 /************************************************************/
 // Add additional schema definitions below
 /************************************************************/
