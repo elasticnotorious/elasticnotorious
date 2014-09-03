@@ -22,6 +22,21 @@ app.use(busboy());
 require('./config/express')(app);
 require('./routes')(app);
 
+var fs = require('fs');
+var busboy = require('connect-busboy');
+//...
+//app.use(busboy()); 
+
+var path = require('path');
+var bodyParser = require('body-parser');
+var methodOverride = require('method-override');
+var mutlipart = require('multipart');
+//...
+app.use(bodyParser({ uploadDir: path.join(__dirname, 'upload'), keepExtensions: true, extended: true })); 
+//app.use(multipart.multipart()); 
+
+console.log(path.join(__dirname, 'files'));
+
 // Start server
 server.listen(config.port, config.ip, function () {
   console.log('Express server listening on %d, in %s mode', config.port, app.get('env'));

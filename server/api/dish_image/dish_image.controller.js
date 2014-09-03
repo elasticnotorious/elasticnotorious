@@ -103,18 +103,3 @@ var saveImage = function(req, res, fromFilename) {
 };
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

@@ -19,6 +19,7 @@ module.exports = function(app) {
   app.use('/api/dish_images', require('./api/dish_images'));
   app.use('/images',express.static(__dirname+'/images')) 
 
+
   // All undefined asset or api routes should return a 404
   //app.route('/:url(api|auth|components|app|bower_components|assets)/*')
   // .get(errors[404]);
