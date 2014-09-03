@@ -3,17 +3,17 @@
   width: 100%;
   background-color: rgba(68, 68, 68, .6);
   border: none;
-  height: 17%;
+  height: 8%;
 }
 #navbar-brand {
-/*  color: #777;
-*/  float: left;
+  color: #FFF9F9;
+  float: left;
   height: 50px;
   padding: 15px 15px;
   font-size: 18px;
   line-height: 20px;
 }
 .navbar-subheader {
-  color: rgb(250, 184, 184);
+  color: rgb(248, 231, 162);
   margin-top: 5%;
 }
