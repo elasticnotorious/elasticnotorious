@@ -1,5 +1,21 @@
+.main-carousel-header {
+    text-align: center;
+}
+.main-footer {
+    float: left;
+}
+.main-carousel-box {
+    width: 30%;
+    float: left;
+    margin-top: 5%;
+    margin-left: 2%;
+}
+.main-carousel {
+    display: inline;
+    width: 30%;
+}
 .main-banner {
-    
+    width: 100%;
 }
 .thing-form {
     margin: 20px 0;
