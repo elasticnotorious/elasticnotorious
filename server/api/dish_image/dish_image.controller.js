@@ -61,7 +61,6 @@ exports.index = function(req, res) {
 
   wait();
 
-
 } else {
 
     // return 501 not implemented
