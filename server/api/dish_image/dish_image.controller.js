@@ -46,7 +46,6 @@ exports.index = function(req, res) {
     });
   });
 
-
   // we have no choice but to wait until the filed with the 
   // dish id has been processed, as well as the file uploaded
   var waitId;
@@ -62,15 +61,13 @@ exports.index = function(req, res) {
 
   wait();
 
+
 } else {
 
     // return 501 not implemented
     res.send(501); 
   }
 };
-
-
-
 
 var saveImage = function(req, res, fromFilename) {
 
