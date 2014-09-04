@@ -9,10 +9,12 @@
       </button>
       <a href="/" id="navbar-brand">Crave</a>
       <p class="navbar-subheader">Delivering What You CRAVE!<p>
-    </div>
-    <input value="search"/><button id="navbar-search-button">Search</button>
-    <input value="location"/><button id="navbar-location-button">Location</button>
-    <button class="navbar-login-button">Login</button>
+      </div>
+      <div ng-controller="SearchCtrl">
+        <input value="search"/><button id="navbar-search-button" ng-click="requestFunction()">Search</button>
+      </div>
+      <input value="location"/><button id="navbar-location-button">Location</button>
+      <button class="navbar-login-button">Login</button>
 <!--     <div collapse="isCollapsed" class="navbar-collapse collapse" id="navbar-main">
  -->      <!-- <ul class="nav navbar-nav">
         <li ng-repeat="item in menu" ng-class="{active: isActive(item.link)}">
