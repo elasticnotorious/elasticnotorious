@@ -5,6 +5,6 @@ var controller = require('./dish_images.controller');
 
 var router = express.Router();
 
-router.get('/:id', controller.index);
+router.get('/', controller.index);
 
 module.exports = router;

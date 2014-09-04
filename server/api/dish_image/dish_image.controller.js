@@ -21,79 +21,48 @@ var path = require('path');
 // Get list of things
 exports.index = function(req, res) {
 
-  if (req.method === 'GET') {
+ if (req.method === 'POST') {
+  var hash       = crypto.createHash('md5').update((new Date).toString()).digest('hex');
+  var uploadname = __dirname + '/../../upload/' + hash;
+  var fieldReady = false;
+  var fileReady  = false;
+  var fstream;
 
-    findImage({id: req.params.id}, function(err, image) {
-
-      if (err) {
-
-        console.log(err);
-        res.send(400, err);
-
-      } else if (image) {
-
-        res.send(201, image);
-
-      } else {
-
-        res.send(404, "image not found");
-
-      }
-    });
-
-  } else if (req.method === 'POST') {
-    var hash       = crypto.createHash('md5').update((new Date).toString()).digest('hex');
-    var uploadname = __dirname + '/../../upload/' + hash;
-    var fieldReady = false;
-    var fileReady = false;
-    var fstream;
-
-    req.pipe(req.busboy);
+  req.pipe(req.busboy);
   
-    req.busboy.on('field', function(fieldname, val, fieldnameTruncated, valTruncated) {
-      console.log('Field [' + fieldname + ']: value: ' + val);
-      req.params.id = val;
-      fieldReady = true;
-      console.log("done getting field");
+  req.busboy.on('field', function(fieldname, val, fieldnameTruncated, valTruncated) {
+    req.params.id = val;
+    fieldReady = true;
+  });
+
+  req.busboy.on('file', function (fieldname, file, filename) {
+
+    fstream = fs.createWriteStream(uploadname);
+    file.pipe(fstream);
+
+    fstream.on('close', function () {
+      fileReady = true;
+      console.log("done getting file");
     });
-
-    req.busboy.on('file', function (fieldname, file, filename) {
-      console.log("Uploading: " + filename); 
-      console.log("Uploading to: " + uploadname); 
-
-      fstream = fs.createWriteStream(uploadname);
+  });
 
 
-      file.pipe(fstream);
-
-      fstream.on('close', function () {
-        fileReady = true;
-        console.log("done getting file");
-      });
-
-
-    });
-
-
+  // we have no choice but to wait until the filed with the 
+  // dish id has been processed, as well as the file uploaded
   var waitId;
   var wait = function() {
-    console.log("in wait");
 
     // wait for field and file
     if (fieldReady && fileReady) {
-      console.log("saving image");
       saveImage(req, res, uploadname);
     } else {
-      console.log("rewaiting");
       waitId = setTimeout(wait, 100);
     }
   };
 
-  console.log("wait call");
   wait();
-  console.log("end wait call");
 
-  } else {
+} else {
 
     // return 501 not implemented
     res.send(501); 
@@ -104,9 +73,6 @@ exports.index = function(req, res) {
 
 
 var saveImage = function(req, res, fromFilename) {
-  //console.log("filaname: ", filename);
-  //var fromFilename = path.normalize(filename);
-  console.log("reading file: ", fromFilename);
 
   fs.readFile(fromFilename, function (err, data) {
     if (err) throw err;
@@ -116,43 +82,39 @@ var saveImage = function(req, res, fromFilename) {
     fs.rename(fromFilename, newfilename, function(err) {
       if (err) throw err;
 
-      console.log("renamed file");
+      var data = {dish_id: req.params.id, pathname: '/images/'+hash, hash: hash};
+      console.log(data);
+      var image = new Image(data);
+      image.save()
+      .then(function(found) {
 
+        // not sure this is supposed to be here
+        Images.add(found);
+        res.send(201, found);
+      })
+      .otherwise(function(err) {
+
+        console.log(err);
+        res.send(400);
+      });
     });
   });
-  //   var Image = new Image(data);
-  //   Image.save()
-  //   .then(function(found) {
-
-  //   // not sure this is supposed to be here
-  //   Images.add(found);
-  //   res.send(201, found);
-  // })
-  // .otherwise(function(err) {
-    
-  //   console.log(err);
-  //   res.send(400);
-  // });
+  
 };
 
-// we don't want to save the same image multiple times,
-// so we store a hash of the image with it, and when 
-// we
-var findImage = function(data, callback) {
-  //var hash = crypto.createHash('md5').update(data).digest('hex');
 
-  new Image(data)
-  .fetch()
-  .then(function(found) {
 
-    Images.add(found);
-    callback(null, found);
 
-  })
-  .otherwise(function(err) {
 
-    callback(err, null);
 
-  });
-};
+
+
+
+
+
+
+
+
+
+
 

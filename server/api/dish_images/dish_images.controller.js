@@ -18,7 +18,7 @@ exports.index = function(req, res) {
   if (req.method === 'GET') {
 
     Images
-      .query({where: {id : req.params.id }})
+      .query({where: {dish_id : req.query.dish_id }})
       .fetch()
       .then(function(found) {
 
