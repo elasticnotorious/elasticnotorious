@@ -5,6 +5,7 @@
 'use strict';
 
 var errors = require('./components/errors');
+var express = require('express');
 
 module.exports = function(app) {
 
@@ -16,7 +17,7 @@ module.exports = function(app) {
   app.use('/api/rating', require('./api/rating'));
   app.use('/api/dish_image', require('./api/dish_image'));
   app.use('/api/dish_images', require('./api/dish_images'));
-  
+  app.use('/images',express.static(__dirname+'/images')) 
 
   // All undefined asset or api routes should return a 404
   //app.route('/:url(api|auth|components|app|bower_components|assets)/*')

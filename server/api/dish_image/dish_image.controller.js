@@ -15,6 +15,7 @@ var Image = require('../../bookshelf/models/image');
 var fs = require('fs');
 var crypto = require('crypto');
 var busboy = require('connect-busboy');
+var path = require('path');
 
 
 // Get list of things
@@ -41,44 +42,56 @@ exports.index = function(req, res) {
     });
 
   } else if (req.method === 'POST') {
-    console.log(req);
+    var hash       = crypto.createHash('md5').update((new Date).toString()).digest('hex');
+    var uploadname = __dirname + '/../../upload/' + hash;
+    var fieldReady = false;
+    var fileReady = false;
+    var fstream;
 
-    // var fstream;
-    // req.pipe(req.busboy);
-    // req.busboy.on('file', function (fieldname, file, filename) {
-    //     console.log("Uploading: " + filename); 
-    //     fstream = fs.createWriteStream(__dirname + '/files/' + filename);
-    //     file.pipe(fstream);
-    //     fstream.on('close', function () {
-    //         res.redirect('back');
-    //     });
-    // });
+    req.pipe(req.busboy);
+  
+    req.busboy.on('field', function(fieldname, val, fieldnameTruncated, valTruncated) {
+      console.log('Field [' + fieldname + ']: value: ' + val);
+      req.params.id = val;
+      fieldReady = true;
+      console.log("done getting field");
+    });
+
+    req.busboy.on('file', function (fieldname, file, filename) {
+      console.log("Uploading: " + filename); 
+      console.log("Uploading to: " + uploadname); 
+
+      fstream = fs.createWriteStream(uploadname);
 
 
-    //console.log(req);
-    // console.log("req.files:", req.files);
-    // console.log("dish_id:", req.params.dish_id);
-    // var hash     = crypto.createHash('md5').update(req.body.file).digest('hex');
-    // var pathname = '/image_archive/'+hash;
-    // var filename = path.join(__dirname, pathname);
-    // console.log("filename: ", filename);
-    // var data     = {dish_id: req.body.id, hash: hash, pathname: pathanme};
+      file.pipe(fstream);
 
-    // // save image file in archive with the filename
-    // // being the md5 hash of the file so the name of
-    // // the file will alway sbe unique
-    // fs.writeFile(filename, req.body.file, function(err) {
+      fstream.on('close', function () {
+        fileReady = true;
+        console.log("done getting file");
+      });
 
-    //   if (err) {
 
-    //     console.log(err);
-    //     res.send(400, err);
+    });
 
-    //   } else {
-        
-    //     res.send(201, found);
-    //   }
-    // });
+
+  var waitId;
+  var wait = function() {
+    console.log("in wait");
+
+    // wait for field and file
+    if (fieldReady && fileReady) {
+      console.log("saving image");
+      saveImage(req, res, uploadname);
+    } else {
+      console.log("rewaiting");
+      waitId = setTimeout(wait, 100);
+    }
+  };
+
+  console.log("wait call");
+  wait();
+  console.log("end wait call");
 
   } else {
 
@@ -87,21 +100,39 @@ exports.index = function(req, res) {
   }
 };
 
-var saveImage = function(req, res, data) {
 
-  var Image = new Image(data);
-  Image.save()
-  .then(function(found) {
 
-    // not sure this is supposed to be here
-    Imagees.add(found);
-    res.send(201, found);
-  })
-  .otherwise(function(err) {
-    
-    console.log(err);
-    res.send(400);
+
+var saveImage = function(req, res, fromFilename) {
+  //console.log("filaname: ", filename);
+  //var fromFilename = path.normalize(filename);
+  console.log("reading file: ", fromFilename);
+
+  fs.readFile(fromFilename, function (err, data) {
+    if (err) throw err;
+    var hash = crypto.createHash('md5').update(data).digest('hex');
+    var newfilename = path.normalize(__dirname+'../../../images/'+hash);
+
+    fs.rename(fromFilename, newfilename, function(err) {
+      if (err) throw err;
+
+      console.log("renamed file");
+
+    });
   });
+  //   var Image = new Image(data);
+  //   Image.save()
+  //   .then(function(found) {
+
+  //   // not sure this is supposed to be here
+  //   Images.add(found);
+  //   res.send(201, found);
+  // })
+  // .otherwise(function(err) {
+    
+  //   console.log(err);
+  //   res.send(400);
+  // });
 };
 
 // we don't want to save the same image multiple times,
