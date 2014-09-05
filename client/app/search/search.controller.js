@@ -7,15 +7,16 @@ angular.module('craveApp')
     //   {dish: 'TEST'},
     //   {dish: 'TEST2'}
     //   ]};
-    $scope.data = [];
+    // $scope.data = [];
+      $scope.data = {};
+
     $scope.requestFunction = function() {
-      console.log(SearchFactory);
     }
-    var promise = SearchFactory.getFunction();
-    promise.then(function(data){
-      console.log(data);
-      $scope.data = data;
-    })
+     SearchFactory.getFunction().then(function(data){
+        console.log(data);
+        $scope.data = data;
+      })
+
     // $scope.$watch('data', function() {
     //   $scope.data = $scope.data;
     //   //$scope.data

@@ -6,8 +6,10 @@
   <br>
   <ul>
     <!-- <li>yolo</li> -->
-    <li>{{data}}</li>
-    <li ng-repeat="dish in data"><a ui-sref="dish">{{dish.dish}}</a></li>
+    <!-- <li>{{data}}</li> -->
+    <li ng-repeat="dish in data">
+      <a ui-sref="dish({id: dish.id})">{{dish.name}}</a>
+    </li>
   </ul>
 
 </div>
