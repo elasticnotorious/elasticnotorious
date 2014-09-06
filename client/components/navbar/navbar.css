@@ -17,3 +17,9 @@
   color: rgb(248, 231, 162);
   margin-top: 5%;
 }
+.nav-login-button {
+  display: inline;
+}
+.nav-button {
+  display: inline;
+}

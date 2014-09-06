@@ -1,18 +1,8 @@
 'use strict';
 
 angular.module('craveApp')
-  .controller('NavbarCtrl', function ($scope, $location) {
-    // $scope.menu = [{
-    //   'title': 'Home',
-    //   'link': '/'
-    // }];
-
-    $scope.isCollapsed = true;
-
-    $scope.isActive = function(route) {
-      return route === $location.path();
-    };
-  });
+  .controller('SignInCtrl', ['$scope', 'SignInFactory', function ($scope, SignInFactory) {
+  }]);
 
   var ModalDemoCtrl = function ($scope, $modal, $log) {
 
