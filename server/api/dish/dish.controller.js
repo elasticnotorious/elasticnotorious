@@ -17,7 +17,6 @@ var Dish = require('../../bookshelf/models/dish');
 exports.index = function(req, res) {
 
   if (req.method === 'GET') {
-
     findDish({id: req.params.id}, function(err, dish) {
 
       if (err) {
@@ -56,7 +55,7 @@ exports.index = function(req, res) {
     });
 
   } else {
-
+    
     // return 501 not implemented
     res.send(501); 
   }
@@ -80,6 +79,7 @@ var saveDish = function(req, res, data) {
 };
 
 var findDish = function(data, callback) {
+console.log('in the dish server');
 
   new Dish(data)
   .fetch()

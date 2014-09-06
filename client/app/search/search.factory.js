@@ -13,11 +13,11 @@ angular.module('craveApp')
       //   'X-Parse-Application-Id': 'BwN0ekIDkYFRTqDlQLEuGT5Dra19III55M4FdYzq'
       // }
     }).success(function(info, status){
-      console.log('info', info, 'status', status);
+      // console.log('info', info, 'status', status);
       deferred.resolve(info);
       // return info;
     }).error(function(info, status){
-      console.error('GET Request fails with the following...',  info, status)
+      // console.error('GET Request fails with the following...',  info, status)
       deferred.reject('Error', info, 'Status', status);
       // console.log('Error', info, 'Status', status);
     });

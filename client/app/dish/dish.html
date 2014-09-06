@@ -1,17 +1,18 @@
 <div ng-include="'components/navbar/navbar.html'"></div>
 
 <header class="hero-unit" id="banner">
-  <div class="container">
-    <h1>Dish Name</h1>
+  <div class="container" ng-controller="DishCtrl">
+    <h1>{{data.name}}</h1>
     <p class="dish-description?">Dish Description</p>
     <img class="dish-picture" src="">
-    <a class="rating-link" href="">Rate this Dish</a> <br>
+    
 
 <!-- star rating stuff begins -->
-  <div id="star-rating" ng-controller="RatingCtrl">
+  <div id="star-rating" ng-controller="DishCtrl">
+  <a class="rating-link" href="">Rate this Dish</a> <br>
     <!-- <h4>Default</h4> -->
-    <rating ng-model="rate" max="max" readonly="isReadonly" on-hover="hoveringOver(value)" on-leave="overStar = null"></rating>
-    <span class="label" ng-class="{'label-warning': percent<30, 'label-info': percent>=30 && percent<70, 'label-success': percent>=70}" ng-show="overStar && !isReadonly">{{percent}}%</span>
+    <rating ng-model="rate" max="5" readonly="isReadonly"  on-leave="overStar = null"></rating>
+    <span class="label" ng-class="{'label-warning': percent<30, 'label-info': percent>=30 && percent<70, 'label-success': percent>=70}" ng-show=true>{{rate}}/5 Stars</span>
 
     <!-- <pre style="margin:15px 0;">Rate: <b>{{rate}}</b> - Readonly is: <i>{{isReadonly}}</i> - Hovering over: <b>{{overStar || "none"}}</b></pre> -->
 
