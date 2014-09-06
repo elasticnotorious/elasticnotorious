@@ -13,7 +13,7 @@ angular.module('craveApp')
     $scope.requestFunction = function() {
     }
      SearchFactory.getFunction().then(function(data){
-        console.log(data);
+        // console.log(data);
         $scope.data = data;
       })
 
