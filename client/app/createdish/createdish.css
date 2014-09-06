@@ -1,0 +1,17 @@
+/*input.ng-invalid {
+    border: 1px solid #f00;
+    background-color: #fee;
+}*/
+
+.has-error {
+    border: 1px solid #f00;
+    background-color: #fee;
+}
+
+.validation-message {
+    color: #f00;
+}
+
+#createDishContainer {
+	margin-top: 100px;
+}
