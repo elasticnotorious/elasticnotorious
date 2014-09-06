@@ -14,6 +14,7 @@ module.exports = function(app) {
   
   app.use('/api/dish', require('./api/dish'));
   app.use('/api/dishes', require('./api/dishes'));
+  app.use('/api/restaurant', require('./api/restaurants'));
   app.use('/api/rating', require('./api/rating'));
   app.use('/api/dish_image', require('./api/dish_image'));
   app.use('/api/dish_images', require('./api/dish_images'));
