@@ -3,6 +3,7 @@
 angular.module('craveApp')
   .controller('DishCtrl', ['$scope', 'DishFactory', function ($scope, DishFactory) {
 	$scope.data = {};
+  $scope.picture;
 	DishFactory.getFunction().then(function(data){
 	        console.log(data);
 	        $scope.data = data;
@@ -11,16 +12,9 @@ angular.module('craveApp')
 	        $scope.percent = 100 * (data.rating/5);
 	      })
 
-	// var RatingCtrl = function ($scope, data) {
-	//   $scope.rate = 7;
-	//   $scope.max = 5;
-	//   $scope.isReadonly = false;
-
-  // $scope.hoveringOver = function(value) {
-  // 	console.log(value);
-  //   $scope.overStar = value;
-  //   $scope.percent = 100 * (value / 5);
-  // };
+  DishFactory.getPictures().then(function(data){
+    $scope.picture = data[0].pathname;
+  })
 
   $scope.ratingStates = [
     {stateOn: 'glyphicon-ok-sign', stateOff: 'glyphicon-ok-circle'},
