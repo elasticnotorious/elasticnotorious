@@ -8,10 +8,18 @@
   <ul>
     <!-- <li>yolo</li> -->
     <!-- <li>{{data}}</li> -->
-    <li ng-repeat="dish in data">
-      <a ui-sref="dish({id: dish.id})">{{dish.name}}</a>
-    </li>
-  </ul>
+    <table class ="table table-hover">
+      <thead>
+        <tr>
+          <th>Dish Name</th>
+          <th>Rating</th>
+        </tr>
+      </thead>
+      <tbody ng-repeat="dish in data">
+        <tr>
+          <td><a ui-sref="dish({id: dish.id})">{{dish.name}}</a></td>
+          <td>{{dish.rating}}/5
+    </table>
 
 </div>
 

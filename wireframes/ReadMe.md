@@ -1,0 +1,1 @@
+This wireframe was completed before any code was written and allowed us to conceptualize our entire project.
