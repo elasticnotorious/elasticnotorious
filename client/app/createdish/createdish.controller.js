@@ -15,7 +15,7 @@ angular.module('craveApp')
         $scope.master = angular.copy(fields);
         $scope.submitted = true;
 
-        if ($scope.createDishForm.$valid) {
+        if ($scope.createDishForm.$valid && !$scope.createDishForm.restaurant_name.$pristine) {
           CreateDishFactory.save(fields);
           $scope.data.rating = 0;
           $scope.data.restaurant_name = "";
@@ -28,7 +28,8 @@ angular.module('craveApp')
     		}
       };
 
-      $scope.reset = function() {
+      $scope.reset = function(fields) {
+        console.log(fields);
         $scope.data = angular.copy($scope.master);
         //$scope.createDishForm.$setPristine();
         $scope.data.rating = 0;
