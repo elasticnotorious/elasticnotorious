@@ -4,31 +4,31 @@
   <div class="container" ng-controller="DishCtrl">
     <h1 class="dish-name">{{data.name}}</h1>
     <!-- <p class="dish-description">Dish Description</p> -->
-    <img class="dish-picture" src={{picture}}>
 
 <!-- star rating stuff begins -->
-  <div id="star-rating" ng-controller="DishCtrl">
-  <a class="rating-link" href="">Rate this Dish</a> <br>
-    <!-- <h4>Default</h4> -->
-    <rating ng-model="rate" max="5" readonly="isReadonly"  on-leave="overStar = null"></rating>
-    <span class="label" ng-class="{'label-warning': percent<30, 'label-info': percent>=30 && percent<70, 'label-success': percent>=70}" ng-show=true>{{rate}}/5 Stars</span>
+    <div id="star-rating" ng-controller="DishCtrl">
+    <!-- <a class="rating-link" href="">Rate this Dish</a> <br> -->
+      <!-- <h4>Default</h4> -->
+      <rating ng-model="rate" max="5" readonly="isReadonly"  on-leave="overStar = null"></rating>
+      <span class="label" ng-class="{'label-warning': percent<30, 'label-info': percent>=30 && percent<70, 'label-success': percent>=70}" ng-show=true>{{rate}}/5 Stars</span>
 
-    <!-- <pre style="margin:15px 0;">Rate: <b>{{rate}}</b> - Readonly is: <i>{{isReadonly}}</i> - Hovering over: <b>{{overStar || "none"}}</b></pre> -->
+      <!-- <pre style="margin:15px 0;">Rate: <b>{{rate}}</b> - Readonly is: <i>{{isReadonly}}</i> - Hovering over: <b>{{overStar || "none"}}</b></pre> -->
 
-    <!-- <button class="btn btn-sm btn-danger" ng-click="rate = 0" ng-disabled="isReadonly">Clear</button> -->
-    <!-- <button class="btn btn-sm btn-default" ng-click="isReadonly = ! isReadonly">Toggle Readonly</button> -->
-    <!-- <hr /> -->
+      <!-- <button class="btn btn-sm btn-danger" ng-click="rate = 0" ng-disabled="isReadonly">Clear</button> -->
+      <!-- <button class="btn btn-sm btn-default" ng-click="isReadonly = ! isReadonly">Toggle Readonly</button> -->
+      <!-- <hr /> -->
 
-    <!-- <h4>Custom icons</h4>
-    <div ng-init="x = 5"><rating ng-model="x" max="15" state-on="'glyphicon-ok-sign'" state-off="'glyphicon-ok-circle'"></rating> <b>(<i>Rate:</i> {{x}})</b></div>
-    <div ng-init="y = 2"><rating ng-model="y" rating-states="ratingStates"></rating> <b>(<i>Rate:</i> {{y}})</b></div> -->
-  </div>
+      <!-- <h4>Custom icons</h4>
+      <div ng-init="x = 5"><rating ng-model="x" max="15" state-on="'glyphicon-ok-sign'" state-off="'glyphicon-ok-circle'"></rating> <b>(<i>Rate:</i> {{x}})</b></div>
+      <div ng-init="y = 2"><rating ng-model="y" rating-states="ratingStates"></rating> <b>(<i>Rate:</i> {{y}})</b></div> -->
+    </div>
+    <img class="dish-picture" src={{picture}}>
 <!-- star rating stuff ends -->
 
   </div>
 </header>
 
-<div ng-controller="ModalDemoCtrl" class="nav-button">
+<div ng-controller="ModalDishCtrl" class="comments-button">
     <script type="text/ng-template" id="myModalContent.html">
         <div class="modal-header">
             <h3 class="modal-title">Comments</h3>
@@ -43,19 +43,9 @@
     </script>
 
     <button class="btn btn-default nav-comment-button" ng-click="open()">Comments</button>
-    <div ng-show="selected">Selection from a modal: {{ selected }}</div>
+    <!-- <div ng-show="selected">Selection from a modal: {{ selected }}</div> -->
 </div>
-<!-- <div class="container">
-  <div class="row">
-    <div class="col-lg-12">
-      <h1 class="page-header">Comments:</h1>
 
-      <ul class="nav nav-tabs nav-stacked col-md-4 col-lg-4 col-sm-6" ng-repeat="thing in awesomeThings">
-        <li><a href="#" tooltip="{{thing.info}}">{{thing.name}}</a></li>
-      </ul>
-    </div>
-  </div>
-</div> -->
 
 <footer class="footer">
   <div class="container">
