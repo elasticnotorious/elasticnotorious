@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('craveApp')
-.factory('SearchFactory', function ($q, $http) {
+.factory('SearchFactory', function ($q, $http, $stateParams) {
   var getFunction = function(callback){
     var deferred = $q.defer();
     // console.log(deferred);
@@ -22,10 +22,11 @@ angular.module('craveApp')
       // console.log('Error', info, 'Status', status);
     });
     return deferred.promise;
-  }
+  };
+
+   
 
   return {
     getFunction: getFunction,
-    // data: data,
   };
 });

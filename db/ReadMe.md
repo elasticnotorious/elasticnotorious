@@ -1,0 +1,1 @@
+This file contains all of the binary data created by sqlite3.
