@@ -13,7 +13,7 @@ angular.module('craveApp')
   		})
   		.then(function(results) {
 
-  			var tmp = {name: data.dish_name, restaurant_id: results.data.id};
+  			var tmp = {name: data.dish_name, restaurant_id: results.data.id, rating: data.rating};
 	  		$http({
 	  			method: "POST",
 	  			url: 'api/dish',

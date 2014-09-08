@@ -7,13 +7,31 @@
 <div id="form" class="col-md-8" ng-controller="ExampleController">
   <form novalidate name="createDishForm" class="createDishForm" ng-submit="update(data)" ng-class="{ submitted: submitted }">
     <div class="row">
+      <div class="col-md-3">Rating:</div>
+      <div class="col-md-3">
+        <rating ng-model="data.rating"
+                name="rating"
+                ng-class="{ 'has-error' : createDishForm.rating.$invalid && !createDishForm.rating.$pristine }"
+                max="5"
+                readonly="false"
+                on-hover="hoveringOver(value)"
+                on-leave="overStar = null" ng-required="true">
+        </rating>
+      </div>
+      <div class="col-md-3">
+          <span class="validation-message"
+                ng-show="submitted && createDishForm.restaurant_name.$error.required">
+            Required!
+          </span>
+      </div> 
+    </div>
+     <div class="row">
       <div class="col-md-3">Restaurant Name:</div> 
       <div class="col-md-3">
         <input type="text" 
                name="restaurant_name" 
-               ng-blur="getRestaurant(data.restaurant_name)" 
                ng-model="data.restaurant_name" 
-               ng-class="{ 'has-error' : createDishForm.restaurant_name.$invalid && !createDishForm.restaurant_name.$pristine }"required/><br />
+               ng-class="{ 'has-error' : createDishForm.restaurant_name.$invalid && !createDishForm.restaurant_name.$pristine }" required/><br />
       </div>
       <div class="col-md-3">
           <span class="validation-message" 

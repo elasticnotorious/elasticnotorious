@@ -12,14 +12,12 @@ angular.module('craveApp')
 
       $scope.update = function(fields) {
 
-      	console.log("window: " , $window);
-
-
+        console.log("FIELDS: ",fields);
         $scope.master = angular.copy(fields);
         $scope.submitted = true;
 
         if ($scope.createDishForm.$valid) {
-        	CreateDishFactory.save(fields);
+          CreateDishFactory.save(fields);
         }else {
         	$window.alert('Please fix any validation errors and try again.');
     		}
