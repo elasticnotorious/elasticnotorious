@@ -17,9 +17,28 @@
   color: rgb(248, 231, 162);
   margin-top: 5%;
 }
-.nav-login-button {
+.nav-buttons {
   display: inline;
 }
-.nav-button {
+.login-button {
+  float: right;
+  margin-top: .7%;
+}
+.input-group {
   display: inline;
+}
+.form-control {
+  width: 200px;
+}
+#location-input-box {
+  width: 200px;
+}
+#search-input-box {
+  width: 200px;
+}
+#location-input-group {
+  
+}
+#search-input-group {
+
 }
