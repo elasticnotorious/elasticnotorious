@@ -2,8 +2,8 @@
 
 <header class="hero-unit" id="banner">
   <div class="container" ng-controller="DishCtrl">
-    <h1>{{data.name}}</h1>
-    <p class="dish-description?">Dish Description</p>
+    <h1 class="dish-name">{{data.name}}</h1>
+    <!-- <p class="dish-description">Dish Description</p> -->
     <img class="dish-picture" src={{picture}}>
 
 <!-- star rating stuff begins -->
@@ -28,21 +28,39 @@
   </div>
 </header>
 
-<div class="container">
+<div ng-controller="ModalDemoCtrl" class="nav-button">
+    <script type="text/ng-template" id="myModalContent.html">
+        <div class="modal-header">
+            <h3 class="modal-title">Comments</h3>
+        </div>
+        <div class="modal-body">
+
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-primary" ng-click="ok()">OK</button>
+            <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
+        </div>
+    </script>
+
+    <button class="btn btn-default nav-comment-button" ng-click="open()">Comments</button>
+    <div ng-show="selected">Selection from a modal: {{ selected }}</div>
+</div>
+<!-- <div class="container">
   <div class="row">
     <div class="col-lg-12">
       <h1 class="page-header">Comments:</h1>
+
       <ul class="nav nav-tabs nav-stacked col-md-4 col-lg-4 col-sm-6" ng-repeat="thing in awesomeThings">
         <li><a href="#" tooltip="{{thing.info}}">{{thing.name}}</a></li>
       </ul>
     </div>
   </div>
-</div>
+</div> -->
 
 <footer class="footer">
   <div class="container">
-      <p>Angular Fullstack v2.0.12 |
-        <a href="https://twitter.com/tyhenkel">@tyhenkel</a> |
-         <a href="https://github.com/DaftMonk/generator-angular-fullstack/issues?state=open">Issues</a></p>
+      <p>Crave Inc. 2014|
+        <a href="https://twitter.com">@crave</a> |
+         <a href="https://github.com/elasticnotorious/elasticnotorious/issues?q=is%3Aopen+is%3Aissue">Issues</a></p>
   </div>
 </footer>

@@ -11,3 +11,16 @@
   color: yellow;
 }
 /*End of star rating stuff*/
+
+.top {
+  /*background-color: white;*/
+  min-height: 250px;
+}
+
+.dish-description {
+  color: #434245;
+}
+
+.dish-name {
+  color: #504F52;
+}
