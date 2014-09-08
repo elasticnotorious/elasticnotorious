@@ -3,52 +3,64 @@
     <div class="navbar-header">
       <a href="/" id="navbar-brand">Crave</a>
       <p class="navbar-subheader">Delivering What You CRAVE!<p>
-    </div>
-    <div ng-controller="SearchCtrl" class="nav-buttons">
-      
-
-
-
-
-      <div class="input-group" id="search-input-group">
-        <input value="search" type="text" class="form-control" id="search-input-box">
-        <span class="input-group-btn">
-          <button class="btn btn-default" id="navbar-search-button" ng-click="requestFunction()" ui-sref="search">Search</button>
-        </span>
       </div>
+
+
+      <div class="css-really-sucks">
+
+        <button class="button-background create-review-button btn btn-default">Leave a review</button>
+
+
+        <div ng-controller="SearchCtrl" class="nav-buttons">
+
+          <div class="css-sucks">
+            <div class="input-group" id="search-input-group">
+              <input value="enter search" type="text" class="form-control" id="search-input-box">
+              <span class="input-span input-group-btn">
+                <button class="button-background btn btn-default" id="navbar-search-button" ng-click="requestFunction()" ui-sref="search">Search</button>
+              </span>
+            </div>
+          </div>
+
+
+        </div>
+
+
+        <div class="css-sucks">
+          <div class="input-group" id="location-input-group">
+            <input value="San Francisco" type="text" class="form-control" id="location-input-box">
+            <span class="input-span input-group-btn">
+              <button class="button-background btn btn-default" id="navbar-location-button" type="button">Location</button>
+            </span>
+          </div>
+        </div>
+
     
-
-
-    </div>
-
-
-
-      <div class="input-group" id="location-input-group">
-        <input value="location" type="text" class="form-control" id="location-input-box">
-        <span class="input-group-btn">
-          <button class="btn btn-default" id="navbar-location-button" type="button">Location</button>
-        </span>
-      </div>
-
-
-      <div ng-controller="ModalCtrl" class="nav-buttons">
+        <div ng-controller="ModalCtrl" class="nav-buttons">
           <script type="text/ng-template" id="ModalContent.html">
-              <div class="modal-header">
-                  <h3 class="modal-title">Login/Sign Up</h3>
-              </div>
-              <div class="modal-body">
-                <p>Login with:</p> <!--This is where the user will login/sign up.-->
-                <p>Facebook</p>
-                <p>Google+</p>
-                <p>Twitter</p>
-              </div>
-              <div class="modal-footer">
-                  <button class="btn btn-primary" ng-click="ok()">OK</button>
-                  <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
-              </div>
+          <div class="modal-header">
+          <h3 class="modal-title">Login/Sign Up</h3>
+          </div>
+          <div class="modal-body">
+          <p>Login with:</p> <!--This is where the user will login/sign up.-->
+          <p>Facebook</p>
+          <p>Google+</p>
+          <p>Twitter</p>
+          </div>
+          <div class="modal-footer">
+          <button class="btn btn-primary" ng-click="ok()">OK</button>
+          <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
+          </div>
           </script>
 
-          <button class="login-button btn btn-default" ng-click="open()">Login/Sign Up</button>
+          <button class="button-background login-button btn btn-default" ng-click="open()">Login/Sign Up</button>
+
+    </div>
+
+
+
+
+
       </div>
+    </div>
   </div>
-</div>
