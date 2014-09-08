@@ -1,0 +1,1 @@
+This directory is for holding uploaded image files temporarily, until they are permanently moved to the 'images' directory.
