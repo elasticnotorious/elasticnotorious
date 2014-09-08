@@ -18,6 +18,11 @@ angular.module('craveApp')
 
         if ($scope.createDishForm.$valid) {
           CreateDishFactory.save(fields);
+          console.log($scope.createDishForm);
+          $scope.data.rating = "";
+          $scope.data.restaurant_name = "";
+          $scope.data.restaurant_address = "";
+          $scope.data.dish_name = "";
         }else {
         	$window.alert('Please fix any validation errors and try again.');
     		}
