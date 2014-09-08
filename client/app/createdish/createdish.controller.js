@@ -12,14 +12,12 @@ angular.module('craveApp')
 
       $scope.update = function(fields) {
 
-        console.log("FIELDS: ",fields);
         $scope.master = angular.copy(fields);
         $scope.submitted = true;
 
         if ($scope.createDishForm.$valid) {
           CreateDishFactory.save(fields);
-          console.log($scope.createDishForm);
-          $scope.data.rating = "";
+          $scope.data.rating = 0;
           $scope.data.restaurant_name = "";
           $scope.data.restaurant_address = "";
           $scope.data.dish_name = "";
@@ -30,7 +28,10 @@ angular.module('craveApp')
 
       $scope.reset = function() {
         $scope.data = angular.copy($scope.master);
-      };
+        $scope.data.rating = 0;
+        $scope.data.restaurant_name = "";
+        $scope.data.restaurant_address = "";
+        $scope.data.dish_name = "";      };
 
       $scope.getResturant = function(name) {
       	console.log(name);
