@@ -21,6 +21,8 @@ angular.module('craveApp')
           $scope.data.restaurant_name = "";
           $scope.data.restaurant_address = "";
           $scope.data.dish_name = "";
+          $scope.submitted = false;
+          $scope.createDishForm.$setPristine();
         }else {
         	$window.alert('Please fix any validation errors and try again.');
     		}
@@ -28,10 +30,13 @@ angular.module('craveApp')
 
       $scope.reset = function() {
         $scope.data = angular.copy($scope.master);
+        //$scope.createDishForm.$setPristine();
         $scope.data.rating = 0;
         $scope.data.restaurant_name = "";
         $scope.data.restaurant_address = "";
-        $scope.data.dish_name = "";      };
+        $scope.data.dish_name = "";
+
+      };
 
       $scope.getResturant = function(name) {
       	console.log(name);
