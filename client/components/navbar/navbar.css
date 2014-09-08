@@ -26,6 +26,7 @@
 .input-group {
   display: inline;
 }
+<<<<<<< HEAD
 .form-control {
   width: 200px;
 }
@@ -44,7 +45,7 @@
   margin-left: 4%;
 }
 #location-input-group {
-  
+
 }
 #search-input-group {
 
@@ -67,7 +68,7 @@
 }
 .button-background {
   color: #fff;
-  background-color: rgba(240, 240, 240, 0);  
+  background-color: rgba(240, 240, 240, 0);
 }
 .button-background:hover {
 /*  background-color: rgba(168, 177, 184, .8);
