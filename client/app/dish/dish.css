@@ -12,10 +12,10 @@
 }
 /*End of star rating stuff*/
 
-.top {
+/*.top {*/
   /*background-color: white;*/
-  min-height: 250px;
-}
+  /*min-height: 250px;
+}*/
 
 .dish-description {
   color: #434245;
@@ -23,4 +23,15 @@
 
 .dish-name {
   color: #504F52;
+}
+
+.comments-button {
+  position: absolute;
+  left: 50%;
+}
+
+dish-picture {
+  width: 100%;
+  height: auto;
+  
 }
