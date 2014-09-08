@@ -5,22 +5,38 @@
         <span class="sr-only">Toggle navigation</span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
-        <span class="icon-bar"></span> -->
-      </button>
+        <span class="icon-bar"></span> 
+      </button> -->
       <a href="/" id="navbar-brand">Crave</a>
       <p class="navbar-subheader">Delivering What You CRAVE!<p>
+    </div>
+    <div ng-controller="SearchCtrl" class="nav-button">
+      <input value="search"/><button id="navbar-search-button" class="nav-button" ng-click="requestFunction()" ui-sref="search">Search</button>
+    </div>
+      <input value="location"/><button id="navbar-location-button" class="nav-button">Location</button>
+
+      <div ng-controller="ModalDemoCtrl" class="nav-button">
+          <script type="text/ng-template" id="myModalContent.html">
+              <div class="modal-header">
+                  <h3 class="modal-title">Login/Sign Up</h3>
+              </div>
+              <div class="modal-body">
+
+              </div>
+              <div class="modal-footer">
+                  <button class="btn btn-primary" ng-click="ok()">OK</button>
+                  <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
+              </div>
+          </script>
+
+          <button class="btn btn-default nav-login-button" ng-click="open()">Login/Sign Up</button>
+          <div ng-show="selected">Selection from a modal: {{ selected }}</div>
       </div>
-      <div ng-controller="SearchCtrl">
-        <input value="search"/><button id="navbar-search-button" ng-click="requestFunction()">Search</button>
-      </div>
-      <input value="location"/><button id="navbar-location-button">Location</button>
-      <button class="navbar-login-button">Login</button>
 <!--     <div collapse="isCollapsed" class="navbar-collapse collapse" id="navbar-main">
  -->      <!-- <ul class="nav navbar-nav">
         <li ng-repeat="item in menu" ng-class="{active: isActive(item.link)}">
             <a ng-href="{{item.link}}">{{item.title}}</a>
         </li>
       </ul> -->
-    </div>
   </div>
 </div>
