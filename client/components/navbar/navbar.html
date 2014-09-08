@@ -5,15 +5,13 @@
       <p class="navbar-subheader">Delivering What You CRAVE!<p>
       </div>
 
-
-      <div class="css-really-sucks">
+      <div class="css-really-sucks"><!-- this is the container div for the navbar items -->
 
         <button class="button-background create-review-button btn btn-default" ui-sref="createdish">Leave a review</button>
 
-
         <div ng-controller="SearchCtrl" class="nav-buttons">
 
-          <div class="css-sucks">
+          <div class="css-sucks"><!-- this is a container for an input group -->
             <div class="input-group" id="search-input-group">
               <input value="enter search" type="text" class="form-control" id="search-input-box">
               <span class="input-span input-group-btn">
@@ -22,11 +20,9 @@
             </div>
           </div>
 
-
         </div>
 
-
-        <div class="css-sucks">
+        <div class="css-sucks"><!-- this is a container for an input group -->
           <div class="input-group" id="location-input-group">
             <input value="San Francisco" type="text" class="form-control" id="location-input-box">
             <span class="input-span input-group-btn">
@@ -34,8 +30,7 @@
             </span>
           </div>
         </div>
-
-    
+        
         <div ng-controller="ModalCtrl" class="nav-buttons">
           <script type="text/ng-template" id="ModalContent.html">
           <div class="modal-header">
@@ -55,11 +50,7 @@
 
           <button class="button-background login-button btn btn-default" ng-click="open()">Login/Sign Up</button>
 
-    </div>
-
-
-
-
+        </div>
 
       </div>
     </div>
