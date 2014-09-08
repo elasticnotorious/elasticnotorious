@@ -1,27 +1,46 @@
 <div id="navbar" class="navbar navbar-default navbar-static-top" ng-controller="NavbarCtrl">
   <div class="container">
     <div class="navbar-header">
-<!--       <button class="navbar-toggle" type="button" ng-click="isCollapsed = !isCollapsed">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span> 
-      </button> -->
       <a href="/" id="navbar-brand">Crave</a>
       <p class="navbar-subheader">Delivering What You CRAVE!<p>
     </div>
-    <div ng-controller="SearchCtrl" class="nav-button">
-      <input value="search"/><button id="navbar-search-button" class="nav-button" ng-click="requestFunction()" ui-sref="search">Search</button>
-    </div>
-      <input value="location"/><button id="navbar-location-button" class="nav-button">Location</button>
+    <div ng-controller="SearchCtrl" class="nav-buttons">
+      
 
-      <div ng-controller="ModalDemoCtrl" class="nav-button">
-          <script type="text/ng-template" id="myModalContent.html">
+
+
+
+      <div class="input-group" id="search-input-group">
+        <input value="search" type="text" class="form-control" id="search-input-box">
+        <span class="input-group-btn">
+          <button class="btn btn-default" id="navbar-search-button" ng-click="requestFunction()" ui-sref="search">Search</button>
+        </span>
+      </div>
+    
+
+
+    </div>
+
+
+
+      <div class="input-group" id="location-input-group">
+        <input value="location" type="text" class="form-control" id="location-input-box">
+        <span class="input-group-btn">
+          <button class="btn btn-default" id="navbar-location-button" type="button">Location</button>
+        </span>
+      </div>
+
+
+      <div ng-controller="ModalCtrl" class="nav-buttons">
+          <script type="text/ng-template" id="ModalContent.html">
               <div class="modal-header">
                   <h3 class="modal-title">Login/Sign Up</h3>
               </div>
               <div class="modal-body">
-
+                <p>Login with:</p> <!--This is where the user will login/sign up.-->
+                <p>Facebook</p>
+                <p>Google+</p>
+                <p>Twitter</p>
               </div>
               <div class="modal-footer">
                   <button class="btn btn-primary" ng-click="ok()">OK</button>
@@ -29,14 +48,7 @@
               </div>
           </script>
 
-          <button class="btn btn-default nav-login-button" ng-click="open()">Login/Sign Up</button>
-          <div ng-show="selected">Selection from a modal: {{ selected }}</div>
+          <button class="login-button btn btn-default" ng-click="open()">Login/Sign Up</button>
       </div>
-<!--     <div collapse="isCollapsed" class="navbar-collapse collapse" id="navbar-main">
- -->      <!-- <ul class="nav navbar-nav">
-        <li ng-repeat="item in menu" ng-class="{active: isActive(item.link)}">
-            <a ng-href="{{item.link}}">{{item.title}}</a>
-        </li>
-      </ul> -->
   </div>
 </div>
