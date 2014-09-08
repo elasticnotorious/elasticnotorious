@@ -4,7 +4,7 @@
   font-size: 18px;
 }
 
-/*Beginning of star rating stuff*/
+
 #star-rating {
   float: right;
   font-size: 33px;
@@ -12,12 +12,6 @@
   margin-bottom: 3%;
   margin-right: 5%;
 }
-/*End of star rating stuff*/
-
-/*.top {*/
-  /*background-color: white;*/
-  /*min-height: 250px;
-}*/
 
 .dish-description {
   color: #434245;
@@ -32,8 +26,7 @@
   left: 50%;
 }
 
-dish-picture {
-  width: 100%;
-  height: auto;
-  
+.dish-picture {
+  width: 1000px;
+  height: 600px;
 }

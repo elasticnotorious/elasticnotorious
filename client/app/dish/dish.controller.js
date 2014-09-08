@@ -23,7 +23,4 @@ angular.module('craveApp')
     {stateOn: 'glyphicon-heart'},
     {stateOff: 'glyphicon-off'}
   ];
-
-
-
-  }]);
+}]);
